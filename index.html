@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>专用计算器</title>
+    <style>
+        body {
+            font-family: Microsoft YaHei;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .item {
+            margin: 8px 0;
+        }
+        input {
+            padding: 4px 8px;
+            font-size: 14px;
+        }
+        button {
+            padding: 8px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            background: #2e86de;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        #result {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>计算公式：(A1÷d1×B1 + A2÷d2×B2 + A3÷d3×B3) ÷ 1000</h2>
+
+    <div class="item">
+        A1：<input type="number" id="A1" value="0" style="width:80px">
+        ÷ d1：<input type="number" id="d1" value="1" style="width:60px">
+        × B1：<input type="number" id="B1" value="0" style="width:80px">
+    </div>
+    <div class="item">
+        A2：<input type="number" id="A2" value="0" style="width:80px">
+        ÷ d2：<input type="number" id="d2" value="1" style="width:60px">
+        × B2：<input type="number" id="B2" value="0" style="width:80px">
+    </div>
+    <div class="item">
+        A3：<input type="number" id="A3" value="0" style="width:80px">
+        ÷ d3：<input type="number" id="d3" value="1" style="width:60px">
+        × B3：<input type="number" id="B3" value="0" style="width:80px">
+    </div>
+
+    <br>
+    <button onclick="calculate()">计算</button>
+
+    <h3>结果：<span id="result"></span></h3>
+
+    <script>
+        function calculate() {
+            function get(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+            let A1 = get("A1"), d1 = get("d1") || 1, B1 = get("B1");
+            let A2 = get("A2"), d2 = get("d2") || 1, B2 = get("B2");
+            let A3 = get("A3"), d3 = get("d3") || 1, B3 = get("B3");
+
+            let total = (A1/d1*B1 + A2/d2*B2 + A3/d3*B3) / 1000;
+            document.getElementById("result").innerText = total.toFixed(4);
+        }
+    </script>
+</body>
+</html>
